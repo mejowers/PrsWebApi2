@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrsWebApi2", "PrsWebApi2\PrsWebApi2.csproj", "{7F5CDD25-1E60-4886-AC02-C12165120C85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F5CDD25-1E60-4886-AC02-C12165120C85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F5CDD25-1E60-4886-AC02-C12165120C85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F5CDD25-1E60-4886-AC02-C12165120C85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F5CDD25-1E60-4886-AC02-C12165120C85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76A616D1-70C2-445B-843B-4C5875EBD1E0}
+	EndGlobalSection
+EndGlobal
