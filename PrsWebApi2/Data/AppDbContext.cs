@@ -14,7 +14,7 @@ namespace PrsWebApi2.Data
         {
         }
 
-        public DbSet<PrsWebApi2.Models.User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DbSet<PrsWebApi2.Models.Vendor> Vendors { get; set; }
 
