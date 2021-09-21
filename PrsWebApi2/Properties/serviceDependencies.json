@@ -1,0 +1,15 @@
+﻿{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:AppDbContext"
+    },
+    "secrets1": {
+      "type": "secrets"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:AppDbContext"
+    }
+  }
+}
