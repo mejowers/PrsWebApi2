@@ -14,7 +14,7 @@ namespace PrsWebApi2.Models
         [JsonIgnore]
         public virtual Request request { get; set; }
 
-        public virtual Product product { get; set; }
+        public virtual Product product { get; set; } 
         public int ProductId { get; set; }
 
         public int Quantity { get; set; }

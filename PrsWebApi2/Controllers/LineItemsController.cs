@@ -89,6 +89,10 @@ namespace PrsWebApi2.Controllers
         [HttpPost]
         public async Task<ActionResult<LineItem>> PostLineItem(LineItem lineItem)
         {
+            
+            lineItem.product = null;
+            lineItem.request = null;
+
             _context.LineItems.Add(lineItem);
             await _context.SaveChangesAsync();
             await RecalculateTotal(lineItem.RequestId);
@@ -120,7 +124,7 @@ namespace PrsWebApi2.Controllers
 
         public async Task RecalculateTotal(int requestId)
         {
-            var request = await _context.Requests.FindAsync(requestId);
+            var request = await _context.Requests.FindAsync(requestId) ;
             request.Total = (from l in _context.LineItems
                              join p in _context.Products on l.ProductId equals p.Id
                              where l.RequestId == requestId
