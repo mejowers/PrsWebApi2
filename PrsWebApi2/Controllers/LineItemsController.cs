@@ -122,7 +122,9 @@ namespace PrsWebApi2.Controllers
             return _context.LineItems.Any(e => e.Id == id);
         }
 
-        public async Task RecalculateTotal(int requestId)
+
+        
+        public async Task<IActionResult> RecalculateTotal(int requestId)
         {
             var request = await _context.Requests.FindAsync(requestId) ;
             request.Total = (from l in _context.LineItems
@@ -131,7 +133,13 @@ namespace PrsWebApi2.Controllers
                              select new { Total = l.Quantity * p.Price })
                              .Sum(x => x.Total);
             var rc = await _context.SaveChangesAsync();
-            if (rc != 1) throw new Exception("Fatal Error: Did not calculate.");
+           
+            if (rc != 1) 
+            
+            { throw new Exception("Fatal Error: Did not calculate."); }
+
+            return Ok();
         }
+        
     }
 }

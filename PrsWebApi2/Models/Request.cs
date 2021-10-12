@@ -28,5 +28,7 @@ namespace PrsWebApi2.Models
         [StringLength(100)]
         public string ReasonForRejection { get; set; }
 
+        public virtual IEnumerable<LineItem> LineItems { get; set; }
+
     }
 }

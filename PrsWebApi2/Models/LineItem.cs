@@ -11,6 +11,7 @@ namespace PrsWebApi2.Models
         public int Id { get; set; }
 
         public int RequestId { get; set; }
+
         [JsonIgnore]
         public virtual Request request { get; set; }
 
