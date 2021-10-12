@@ -50,6 +50,13 @@ namespace PrsWebApi2.Controllers
             return await _context.LineItems.Where(li => li.RequestId == id).Include(li => li.product.vendor).ToListAsync();
         }
 
+
+        [HttpPut]
+        public async Task<IActionResult> PutLineItem(LineItem lineItem)
+        {
+            return await PutLineItem(lineItem.Id, lineItem);
+        }
+        
         // PUT: api/LineItems/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
