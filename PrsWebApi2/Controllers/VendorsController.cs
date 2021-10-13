@@ -8,34 +8,28 @@ using Microsoft.EntityFrameworkCore;
 using PrsWebApi2.Data;
 using PrsWebApi2.Models;
 
-namespace PrsWebApi2.Controllers
-{
+namespace PrsWebApi2.Controllers {
     [Route("api/[controller]")]
     [ApiController]
-    public class VendorsController : ControllerBase
-    {
+    public class VendorsController : ControllerBase {
         private readonly AppDbContext _context;
 
-        public VendorsController(AppDbContext context)
-        {
+        public VendorsController(AppDbContext context) {
             _context = context;
         }
 
         // GET: api/Vendors
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Vendor>>> GetVendors()
-        {
+        public async Task<ActionResult<IEnumerable<Vendor>>> GetVendors() {
             return await _context.Vendors.ToListAsync();
         }
 
         // GET: api/Vendors/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Vendor>> GetVendor(int id)
-        {
+        public async Task<ActionResult<Vendor>> GetVendor(int id) {
             var vendor = await _context.Vendors.FindAsync(id);
 
-            if (vendor == null)
-            {
+            if (vendor == null) {
                 return NotFound();
             }
 
@@ -46,27 +40,21 @@ namespace PrsWebApi2.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutVendor(int id, Vendor vendor)
-        {
-            if (id != vendor.Id)
-            {
+        public async Task<IActionResult> PutVendor(int id, Vendor vendor) {
+            if (id != vendor.Id) {
                 return BadRequest();
             }
 
             _context.Entry(vendor).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!VendorExists(id))
-                {
+            catch (DbUpdateConcurrencyException) {
+                if (!VendorExists(id)) {
                     return NotFound();
                 }
-                else
-                {
+                else {
                     throw;
                 }
             }
@@ -78,8 +66,7 @@ namespace PrsWebApi2.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Vendor>> PostVendor(Vendor vendor)
-        {
+        public async Task<ActionResult<Vendor>> PostVendor(Vendor vendor) {
             _context.Vendors.Add(vendor);
             await _context.SaveChangesAsync();
 
@@ -88,11 +75,9 @@ namespace PrsWebApi2.Controllers
 
         // DELETE: api/Vendors/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Vendor>> DeleteVendor(int id)
-        {
+        public async Task<ActionResult<Vendor>> DeleteVendor(int id) {
             var vendor = await _context.Vendors.FindAsync(id);
-            if (vendor == null)
-            {
+            if (vendor == null) {
                 return NotFound();
             }
 
@@ -102,14 +87,12 @@ namespace PrsWebApi2.Controllers
             return vendor;
         }
 
-        private bool VendorExists(int id)
-        {
+        private bool VendorExists(int id) {
             return _context.Vendors.Any(e => e.Id == id);
         }
         // put: change record without calling id number
         [HttpPut]
-        public async Task<IActionResult> PutVendor(Vendor vendor)
-        {
+        public async Task<IActionResult> PutVendor(Vendor vendor) {
             _context.Entry(vendor).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
