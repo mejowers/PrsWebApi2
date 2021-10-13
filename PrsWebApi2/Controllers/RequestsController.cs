@@ -90,7 +90,7 @@ namespace PrsWebApi2.Controllers
 
             if (request.Total <= 50)
             {
-                request.Status = "Approve";
+                request.Status = "Approved";
             }
             else { request.Status = "Review"; }
             request.SubmittedDate = DateTime.Now;
@@ -107,8 +107,11 @@ namespace PrsWebApi2.Controllers
         [HttpPost]
         public async Task<ActionResult<Request>> PostRequest(Request request)
         {
+            request.user = null;
+
             request.Status = "new";
             request.SubmittedDate = DateTime.Now;
+            
             _context.Requests.Add(request);
             await _context.SaveChangesAsync();
 
