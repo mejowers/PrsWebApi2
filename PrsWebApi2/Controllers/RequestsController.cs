@@ -38,11 +38,11 @@ namespace PrsWebApi2.Controllers {
         }
 
         // GET: api/Requests
-        [HttpGet("request-lines/{id}")]
-        public async Task<ActionResult<IEnumerable<Request>>> GetRequestByStatus(int id) {
-            return await _context.Requests.Where(req => req.Status == "review" && req.UserId != id)
-                .Include(r => r.user).ToListAsync();
-        }
+        //[HttpGet("request-lines/{id}")]
+        //public async Task<ActionResult<IEnumerable<Request>>> GetRequestByStatus(int id) {
+        //    return await _context.Requests.Where(req => req.Status == "Review" && req.UserId != id)
+        //        .Include(r => r.user).ToListAsync();
+        //}
 
         // PUT: api/Requests/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -69,11 +69,11 @@ namespace PrsWebApi2.Controllers {
             return NoContent();
         }
 
-        //[HttpGet("list-review/{id}")]
-        //public async Task<ActionResult<IEnumerable<Request>>> GetRequestByStatus(int id, Request request) {
-        //    return await _context.Requests.Where(req => req.Status == "review" && req.UserId != id)
-        //        .Include(r => r.user).ToListAsync();
-        //}
+        [HttpGet("list-review/{id}")]
+        public async Task<ActionResult<IEnumerable<Request>>> GetRequestByStatus(int id) {
+            return await _context.Requests.Where(req => req.Status == "Review" && req.UserId != id)
+                .Include(r => r.user).ToListAsync();
+        }
 
         [HttpPut("submit-review")]
         public async Task<IActionResult> PutRequestReview(Request request) {
