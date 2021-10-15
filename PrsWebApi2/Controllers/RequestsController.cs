@@ -69,6 +69,12 @@ namespace PrsWebApi2.Controllers {
             return NoContent();
         }
 
+        //[HttpGet("list-review/{id}")]
+        //public async Task<ActionResult<IEnumerable<Request>>> GetRequestByStatus(int id, Request request) {
+        //    return await _context.Requests.Where(req => req.Status == "review" && req.UserId != id)
+        //        .Include(r => r.user).ToListAsync();
+        //}
+
         [HttpPut("submit-review")]
         public async Task<IActionResult> PutRequestReview(Request request) {
             return await PutRequestReview(request.Id, request);
@@ -83,7 +89,7 @@ namespace PrsWebApi2.Controllers {
             }
             else { request.Status = "Review"; }
             request.SubmittedDate = DateTime.Now;
-
+            
             _context.Entry(request).State = EntityState.Modified;
 
             await _context.SaveChangesAsync();

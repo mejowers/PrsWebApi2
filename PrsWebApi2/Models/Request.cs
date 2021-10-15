@@ -15,16 +15,23 @@ namespace PrsWebApi2.Models
 
         [StringLength(100), Required]
         public string Description { get; set; }
+
         [StringLength(255), Required]
         public string Justification { get; set; }
+
         public DateTime DateNeeded { get; set; }
+
         [StringLength(25), Required]
         public string DeliveryMode { get; set; }
+
         [StringLength(20), Required]
         public string Status { get; set; }
+
         [Column(TypeName = "decimal(11,2)")]
         public decimal Total { get; set; }
+
         public DateTime SubmittedDate { get; set; } = DateTime.Now;
+
         [StringLength(100)]
         public string ReasonForRejection { get; set; }
 
