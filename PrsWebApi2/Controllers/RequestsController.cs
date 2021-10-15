@@ -89,7 +89,7 @@ namespace PrsWebApi2.Controllers {
             }
             else { request.Status = "Review"; }
             request.SubmittedDate = DateTime.Now;
-            
+
             _context.Entry(request).State = EntityState.Modified;
 
             await _context.SaveChangesAsync();
@@ -105,6 +105,7 @@ namespace PrsWebApi2.Controllers {
 
             request.Status = "new";
             request.SubmittedDate = DateTime.Now;
+           
 
             _context.Requests.Add(request);
             await _context.SaveChangesAsync();
