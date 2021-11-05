@@ -29,10 +29,10 @@ namespace PrsWebApi2
         {
             services.AddControllers();
 
-            var connStrKey = "AppDbContext";
+            var connStrKey = "AppDbContextWinhost";
 
 #if DEBUG
-            connStrKey = "AppDbContext";
+            connStrKey = "AppDbContextWinhost";
 #endif
 
             services.AddDbContext<AppDbContext>(options =>
