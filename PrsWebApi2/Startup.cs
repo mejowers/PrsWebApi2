@@ -29,8 +29,14 @@ namespace PrsWebApi2
         {
             services.AddControllers();
 
+            var connStrKey = "AppDbContext";
+
+#if DEBUG
+            connStrKey = "AppDbContext";
+#endif
+
             services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("AppDbContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString(connStrKey)));
             services.AddCors();
         }
 
@@ -51,6 +57,10 @@ namespace PrsWebApi2
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });
+
+            using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope()) {
+                scope.ServiceProvider.GetService<AppDbContext>().Database.Migrate();
+            }
         }
     }
 }
