@@ -29,15 +29,11 @@ namespace PrsWebApi2
         {
             services.AddControllers();
 
-            var connStrKey = "AppDbContextWinhost";
-
-#if DEBUG
-            connStrKey = "AppDbContextWinhost";
-#endif
+            services.AddCors();
 
             services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString(connStrKey)));
-            services.AddCors();
+                    options.UseSqlServer(Configuration.GetConnectionString("AppDbContext")));
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
